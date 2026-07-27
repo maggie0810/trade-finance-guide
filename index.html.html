@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一般週轉金 + 貿週產品 & TMU 產品對照表</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif;
+            background-color: #d1dbe4;
+            color: #111;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 1350px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            padding: 16px;
+            display: flex;
+            gap: 16px;
+        }
+
+        .panel {
+            flex: 1;
+            background: #f4f7f9;
+            border: 2px solid #a2b4c7;
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Panel Header */
+        .panel-header {
+            background: #002855;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px 16px;
+            border-radius: 6px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .panel-header.tmu {
+            background: #004d40;
+        }
+
+        /* Concept Box */
+        .concept-box {
+            background: #fdf8e2;
+            border: 1px solid #f2c94c;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 13px;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .concept-icon {
+            font-size: 22px;
+        }
+
+        .concept-title {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Section Title Box */
+        .section-title-box {
+            background: #4a154b;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            text-align: center;
+            padding: 6px;
+            border-radius: 4px;
+        }
+
+        /* Working Capital Card */
+        .card {
+            background: white;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 10px;
+        }
+
+        .wc-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr 1fr;
+            gap: 10px;
+            font-size: 12px;
+            align-items: center;
+        }
+
+        .wc-list ul {
+            padding-left: 16px;
+            line-height: 1.5;
+        }
+
+        .wc-diagram {
+            border-left: 1px dashed #ccc;
+            border-right: 1px dashed #ccc;
+            padding: 0 8px;
+            text-align: center;
+        }
+
+        .flow-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-top: 4px;
+        }
+
+        .flow-node {
+            border: 1px solid #666;
+            padding: 4px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            background: #fff;
+        }
+
+        .flow-arrow {
+            font-size: 10px;
+            color: #444;
+        }
+
+        /* Product Cards Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #94a3b8;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            font-size: 11.5px;
+        }
+
+        .product-header {
+            background: #0f2c59;
+            color: white;
+            padding: 6px;
+            font-weight: bold;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .product-header.tmu-header {
+            background: #004d40;
+        }
+
+        .product-body {
+            padding: 8px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 6px;
+        }
+
+        .quote-box {
+            background: #eef2f7;
+            padding: 6px;
+            text-align: center;
+            font-weight: bold;
+            color: #1e293b;
+            border-radius: 4px;
+        }
+
+        /* Diagram Illustrations Styling */
+        .diagram-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 8px 4px;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            position: relative;
+        }
+
+        .diagram-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 4px;
+        }
+
+        .actor-box {
+            border: 1px solid #334155;
+            background: #fff;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 10.5px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .arrow-line {
+            font-size: 10px;
+            color: #2563eb;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .bank-box {
+            background: #fef3c7;
+            border: 1px solid #d97706;
+            padding: 4px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 10.5px;
+            font-weight: bold;
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        /* Team Tag Styling */
+        .team-tag {
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            color: #0f172a;
+            padding: 5px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 4px;
+        }
+
+        .team-tag.tmu-tag {
+            background: #d1fae5;
+            border-color: #6ee7b7;
+            color: #064e3b;
+        }
+
+        .team-tag.trade-tag {
+            background: #dbeafe;
+            border-color: #93c5fd;
+            color: #1e40af;
+        }
+
+        /* One-line Quote Footer */
+        .one-line-summary {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: #1d4ed8;
+            padding: 6px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        /* TMU Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 5px 3px;
+        }
+
+        th {
+            background: #e2e8f0;
+            font-weight: bold;
+        }
+
+        .table-title {
+            background: #004d40;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+            padding: 4px;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .badge {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        .feature-box {
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            padding: 6px;
+            font-size: 10.5px;
+            color: #334155;
+            line-height: 1.4;
+        }
+
+        .feature-title {
+            background: #d1fae5;
+            color: #065f46;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 3px;
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- LEFT PANEL: 圖1 | 一般週轉金 + 貿週產品 -->
+    <div class="panel">
+        <div class="panel-header">
+            圖 1 | 一般週轉金 + 貿週產品：解決「交易與資金」的問題
+        </div>
+
+        <div class="concept-box">
+            <span class="concept-icon">💡</span>
+            <div>
+                <span class="concept-title">核心概念：</span>企業做國際貿易或日常營運，常遇到「資金時間對不上」，銀行透過轉融金及貿融產品，協助企業完成交易、取得資金、維持營運。
+            </div>
+        </div>
+
+        <div class="section-title-box">
+            0. 一般週轉金 (Working Capital Loan)
+        </div>
+
+        <div class="card">
+            <div style="font-size: 11.5px; text-align: center; margin-bottom: 6px; font-weight: bold; color: #334155;">
+                企業日常營運需要資金（如採購、備料、薪資、費用），銀行提供短中期資金協助。
+            </div>
+            <div class="wc-layout">
+                <div class="wc-list">
+                    <strong>情境例子：</strong>
+                    <ul>
+                        <li>採購原物料</li>
+                        <li>支付薪資與費用</li>
+                        <li>應收帳款尚未收回</li>
+                        <li>營運資金缺口</li>
+                    </ul>
+                </div>
+                <div class="wc-diagram">
+                    <div style="font-weight: bold; font-size: 11px; margin-bottom: 4px;">資金流程</div>
+                    <div class="flow-flex">
+                        <div class="flow-node">企業</div>
+                        <div class="flow-arrow">➔ 提供週轉金 ➔<br>← 專案貸款 ←</div>
+                        <div class="flow-node">銀行</div>
+                    </div>
+                    <div style="font-size: 10px; color: #059669; font-weight: bold; margin-top: 4px;">企業取得資金，維持營運順暢</div>
+                </div>
+                <div class="wc-list">
+                    <strong>產品特色：</strong>
+                    <ul>
+                        <li>短中期資金需求</li>
+                        <li>彈性動用，隨借隨還</li>
+                        <li>可搭配貿易融資或擔保品</li>
+                    </ul>
+                    <div style="margin-top: 4px; background: #fffbebf5; border: 1px solid #fde68a; padding: 3px; font-size: 10px; border-radius: 3px;">
+                        <strong>核心觀念：</strong>週轉金不是為了買特定貨物，而是為了企業日常營運所需。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 貿融三大產品 (1.進口融資 2.出口融資 3.信用狀) -->
+        <div class="product-grid">
+
+            <!-- 1. 進口融資 -->
+            <div class="product-card">
+                <div class="product-header">1. 進口融資 (Import Financing)</div>
+                <div class="product-body">
+                    <div class="quote-box">我要買東西，但現在需要資金。</div>
+                    
+                    <div class="diagram-box">
+                        <div class="diagram-row">
+                            <div class="actor-box">台灣企業<br>(買方)</div>
+                            <div class="arrow-line">① 訂購商品 ➔<br>← ② 出貨</div>
+                            <div class="actor-box">國外供應商<br>(賣方)</div>
+                        </div>
+                        <div style="font-size: 9.5px; color: #dc2626; padding-left: 4px;">
+                            ③ 缺資金，銀行先幫忙付款
+                        </div>
+                        <div class="bank-box">
+                            ④ 銀行支付貨款<br>
+                            <strong>銀行（提供進口融資）</strong>
+                        </div>
+                    </div>
+
+                    <div class="one-line-summary">
+                        一句話：銀行先幫企業支付貨款，企業未來再還款。
+                    </div>
+
+                    <div class="team-tag trade-tag">
+                        配合團隊：環球交易服務部 / 配合人員：TSS
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. 出口融資 -->
+            <div class="product-card">
+                <div class="product-header">2. 出口融資 (Export Financing)</div>
+                <div class="product-body">
+                    <div class="quote-box">已經賣東西，但錢還沒收到，想提前拿到資金。</div>
+                    
+                    <div class="diagram-box">
+                        <div class="diagram-row">
+                            <div class="actor-box">台灣企業<br>(賣方)</div>
+                            <div class="arrow-line">① 出貨 ➔<br>← ② 未來付款(如60天後)</div>
+                            <div class="actor-box">國外客戶<br>(買方)</div>
+                        </div>
+                        <div class="bank-box" style="margin-top: 4px;">
+                            ③ 應收帳款給銀行，銀行先提供資金<br>
+                            <strong>銀行（提供出口融資）</strong>
+                        </div>
+                        <div style="font-size: 9.5px; color: #166534; text-align: right; padding-right: 4px;">
+                            ④ 客戶付款後，企業再還款
+                        </div>
+                    </div>
+
+                    <div class="one-line-summary">
+                        一句話：銀行提前買斷企業應收帳款。
+                    </div>
+
+                    <div class="team-tag trade-tag">
+                        配合團隊：環球交易服務部 / 配合人員：TSS
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. 信用狀 -->
+            <div class="product-card">
+                <div class="product-header">3. 信用狀 (L/C, Letter of Credit)</div>
+                <div class="product-body">
+                    <div class="quote-box">買賣雙方不熟，請銀行站在中間，依信用狀條件與單據處理付款。</div>
+                    
+                    <div class="diagram-box">
+                        <div class="diagram-row">
+                            <div class="actor-box">買方<br>(進口商)</div>
+                            <div class="arrow-line">① 申請開立L/C ➔</div>
+                            <div class="actor-box">開狀銀行<br>(買方銀行)</div>
+                        </div>
+                        <div style="font-size: 9.5px; text-align: center; color: #475569;">
+                            ② 提示單據 ➔ ⑤ 銀行審核單據 (只看文件、不看貨)
+                        </div>
+                        <div class="diagram-row">
+                            <div class="bank-box" style="width: 48%; font-size: 9.5px;">通知銀行 (賣方銀行)</div>
+                            <div class="arrow-line">③ 出貨用款 ➔</div>
+                            <div class="actor-box" style="width: 45%;">賣方<br>(出口商)</div>
+                        </div>
+                        <div style="font-size: 9.5px; text-align: center; color: #2563eb; font-weight: bold;">
+                            ⑥ 單據符合條件 ➔ 銀行付款
+                        </div>
+                    </div>
+
+                    <div class="one-line-summary">
+                        一句話：L/C 是銀行提供的「付款機制與信用保障」，銀行依單據條件處理付款。
+                    </div>
+
+                    <div class="team-tag trade-tag">
+                        配合團隊：環球交易服務部 / 配合人員：TSS
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="concept-box">
+            <span class="concept-icon">💡</span>
+            <div>
+                <strong>關鍵觀念：</strong>貿融產品解決「貨款時間差」與「交易信用」的問題，讓企業在資金不到位或交易對象不熟的情況下，仍能順利完成交易。
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT PANEL: 圖2 | TMU 產品 -->
+    <div class="panel">
+        <div class="panel-header tmu">
+            圖 2 | TMU 產品：解決「外幣與匯率」的問題
+        </div>
+
+        <div class="concept-box">
+            <span class="concept-icon">💡</span>
+            <div>
+                <span class="concept-title">核心概念：</span>企業未來會有外幣收付款，擔心匯率波動造成成本增加，TMU 產品協助企業管理匯率風險，鎖定成本或調整幣別時間。
+            </div>
+        </div>
+
+        <div class="team-tag tmu-tag">
+            配合團隊：金融行銷部 / 配合人員：TMO
+        </div>
+
+        <!-- TMU 三大產品 -->
+        <div class="product-grid">
+            <!-- 1. Spot -->
+            <div class="product-card">
+                <div class="product-header tmu-header">1. Spot 即期外匯</div>
+                <div class="product-body">
+                    <div class="quote-box">我現在需要外幣，我現在就換。</div>
+                    <div>
+                        <span class="badge">情境例子</span>
+                        <div style="font-size: 11px;">今天需要付 USD 100 萬</div>
+                    </div>
+                    <!-- 最新修正：箭頭與文字格式 -->
+                    <div style="text-align: center; background: #f1f5f9; padding: 6px; border-radius: 4px; font-size: 10px; line-height: 1.6;">
+                        企業 → 新台幣 3,200 萬 → 銀行<br>
+                        企業 ← 美元 100 萬 ← 銀行
+                    </div>
+                    <div class="feature-box">
+                        <span class="feature-title">特點</span><br>
+                        交易在 2 個營業日內完成。現在有需求，現在換匯。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Forward -->
+            <div class="product-card">
+                <div class="product-header tmu-header">2. Forward 遠期外匯</div>
+                <div class="product-body">
+                    <div class="quote-box">我未來需要外幣，但怕匯率變動，先把匯率鎖住。</div>
+                    <div>
+                        <span class="badge">情境例子</span>
+                        <div style="font-size: 11px;">3 個月後需要付 USD 100 萬</div>
+                    </div>
+                    <div style="text-align: center; background: #f1f5f9; padding: 6px; border-radius: 4px; font-size: 10px; line-height: 1.6;">
+                        <strong>今天：</strong>約定 3 個月後匯率 32.00<br>
+                        <strong>3個月後：</strong>企業付 NTD 3,200 萬，換得 USD 100 萬
+                    </div>
+                    <div class="feature-box">
+                        <span class="feature-title">特點</span><br>
+                        未來才交易，但今天先鎖定匯率，避免匯率波動造成損失。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Swap -->
+            <div class="product-card">
+                <div class="product-header tmu-header">3. Swap 換匯交易</div>
+                <div class="product-body">
+                    <div class="quote-box">我現在需要外幣，但未來會換回來。</div>
+                    <div>
+                        <span class="badge">情境例子</span>
+                        <div style="font-size: 11px;">現在需要 USD 100 萬，3 個月後會有美元收入。</div>
+                    </div>
+                    <div style="text-align: center; background: #f1f5f9; padding: 6px; border-radius: 4px; font-size: 10px; line-height: 1.6;">
+                        <strong>今天：</strong>換美元 100 萬使用<br>
+                        <strong>3個月後：</strong>將美元 100 萬換回新台幣
+                    </div>
+                    <div class="feature-box">
+                        <span class="feature-title">特點</span><br>
+                        現在換外幣使用，未來再換回來，調整資金與幣別的時間。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 比較表格 -->
+        <div style="background: white; border: 1px solid #cbd5e1; border-radius: 6px; overflow: hidden;">
+            <div class="table-title">三種外匯產品比較總覽</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>項目</th>
+                        <th>Spot 即期</th>
+                        <th>Forward 遠期</th>
+                        <th>Swap 換匯交易</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>目的</strong></td>
+                        <td>現在有外幣需求</td>
+                        <td>未來有外幣需求，鎖定匯率</td>
+                        <td>現在需要外幣，未來會換回來</td>
+                    </tr>
+                    <tr>
+                        <td><strong>交易時間</strong></td>
+                        <td>現在</td>
+                        <td>未來 (由今天約定)</td>
+                        <td>現在 + 未來</td>
+                    </tr>
+                    <tr>
+                        <td><strong>是否鎖匯率</strong></td>
+                        <td>否</td>
+                        <td>是</td>
+                        <td>是 (即期 + 遠期同時進行)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>資金流向</strong></td>
+                        <td>單向 (一筆交易)</td>
+                        <td>單向 (未來一筆交易)</td>
+                        <td>雙向 (現在換 + 未來換回)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>一句話總結</strong></td>
+                        <td>現在換。</td>
+                        <td>未來換，今天先鎖匯率。</td>
+                        <td>現在換，未來再換回來。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="concept-box">
+            <span class="concept-icon">💡</span>
+            <div>
+                <strong>關鍵觀念：</strong>TMU 產品解決「匯率波動」的風險，協助企業鎖定成本或調整外幣資金的使用時間，強化財務管理。
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
